@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/fatih/color"
+	"github.com/koding/cache"
 	"math/rand"
 	"os"
 	"regexp"
@@ -20,6 +21,8 @@ var possible = []string{
 	"megan",
 	"Patrick",
 	"joe",
+	"stan",
+	"aaron",
 }
 
 type Reviewers struct {
@@ -50,8 +53,6 @@ func pickReviewers() {
 	phabName := os.Getenv("PHABRICATOR_USERNAME")
 	reviewers := Reviewers{possible}
 
-	removeFromReviewers(&reviewers, phabName)
-
 	if phabName == "" {
 		color.Red("You must set ENV['PHABRICATOR_USERNAME'] somewhere! (╯°□°）╯︵ ┻━┻")
 		return
@@ -62,17 +63,33 @@ func pickReviewers() {
 		return
 	}
 
+	removeFromReviewers(&reviewers, phabName)
 	randomlySelectFromPossible(&reviewers)
+	// p := reviewers.possible
+	// Shuffle(p)
 }
 
 func randomlySelectFromPossible(r *Reviewers) {
 	firstThree := rand.Perm(len(r.possible))
-	for _, v := range firstThree {
-		fmt.Println(r.possible[v])
+
+	for _, v := range firstThree[:3] {
+		go fmt.Println(r.possible[v])
+		// color.Red(r.possible[v])
 	}
 
 }
 
+func Shuffle(slc []string) {
+	N := len(slc)
+	for i := 0; i < N; i++ {
+		// choose index uniformly in [i, N-1]
+		r := i + rand.Intn(N-i)
+		slc[r], slc[i] = slc[i], slc[r]
+	}
+	fmt.Println(slc)
+}
+
 func main() {
 	pickReviewers()
+	NewMemoryWithTTL(2 * time.Second)
 }
