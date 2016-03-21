@@ -1,13 +1,12 @@
 package main
 
 import (
-	"fmt"
 	"github.com/fatih/color"
-	"github.com/koding/cache"
 	"math/rand"
 	"os"
 	"regexp"
 	"strings"
+	"time"
 )
 
 var possible = []string{
@@ -44,7 +43,6 @@ func removeFromReviewers(r *Reviewers, name string) {
 
 		if match {
 			r.possible = append(r.possible[:i], r.possible[i+1:]...)
-			fmt.Println(r.possible)
 		}
 	}
 }
@@ -65,31 +63,18 @@ func pickReviewers() {
 
 	removeFromReviewers(&reviewers, phabName)
 	randomlySelectFromPossible(&reviewers)
-	// p := reviewers.possible
-	// Shuffle(p)
 }
 
 func randomlySelectFromPossible(r *Reviewers) {
-	firstThree := rand.Perm(len(r.possible))
+	rand.Seed(time.Now().UnixNano())
+	randomize := rand.Perm(len(r.possible))
 
-	for _, v := range firstThree[:3] {
-		go fmt.Println(r.possible[v])
-		// color.Red(r.possible[v])
+	for _, v := range randomize[:3] {
+		color.Red(r.possible[v])
 	}
 
-}
-
-func Shuffle(slc []string) {
-	N := len(slc)
-	for i := 0; i < N; i++ {
-		// choose index uniformly in [i, N-1]
-		r := i + rand.Intn(N-i)
-		slc[r], slc[i] = slc[i], slc[r]
-	}
-	fmt.Println(slc)
 }
 
 func main() {
 	pickReviewers()
-	NewMemoryWithTTL(2 * time.Second)
 }
