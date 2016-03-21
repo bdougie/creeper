@@ -37,7 +37,7 @@ func contains(r Reviewers, s string) bool {
 	return false
 }
 
-func removeFromReviewers(r *Reviewers, name string) {
+func removeMeFromReviewers(r *Reviewers, name string) {
 	for i, p := range r.possible {
 		match, _ := regexp.MatchString(p, strings.ToLower(name))
 
@@ -61,7 +61,7 @@ func pickReviewers() {
 		return
 	}
 
-	removeFromReviewers(&reviewers, phabName)
+	removeMeFromReviewers(&reviewers, phabName)
 	randomlySelectFromPossible(&reviewers)
 }
 
