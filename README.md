@@ -5,6 +5,8 @@ picked last and who you always ping too much for pull requests.
 Creep is a script that picks 3 people to review my code at random and
 prints them to the console.
 
+If you have Bloc-Alpha access this is a port of my [script/reviewers](https://github.com/Bloc/Bloc/blob/master/script/reviewers)
+
 ## Setup
 
 Download the latest [Go](https://golang.org/dl/)
@@ -14,5 +16,3 @@ Download the latest [Go](https://golang.org/dl/)
 ## Run
 
 `$ creep`
-
-*If you have Bloc-Alpha access this is a port of my [script/reviewers](https://github.com/Bloc/Bloc/blob/master/script/reviewers)
