@@ -7,6 +7,9 @@ prints them to the console.
 
 If you have Bloc-Alpha access this is a port of my [script/reviewers](https://github.com/Bloc/Bloc/blob/master/script/reviewers)
 
+## TODO
+I need to figure out how to pbcopy in Go.
+
 ## Setup
 
 Download the latest [Go](https://golang.org/dl/)
