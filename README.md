@@ -14,3 +14,5 @@ Download the latest [Go](https://golang.org/dl/)
 ## Run
 
 `$ creep`
+
+*If you have Bloc-Alpha access this is a port of my [script/reviewers](https://github.com/Bloc/Bloc/blob/master/script/reviewers)
