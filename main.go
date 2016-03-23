@@ -14,7 +14,6 @@ var possible = []string{
 	"ambriz",
 	"brett",
 	"brian",
-	"christian",
 	"jared",
 	"jason",
 	"megan",
@@ -69,7 +68,7 @@ func randomlySelectFromPossible(r *Reviewers) {
 	rand.Seed(time.Now().UnixNano())
 	randomize := rand.Perm(len(r.possible))
 
-	for _, v := range randomize[:3] {
+	for _, v := range randomize[:4] {
 		color.Red(r.possible[v])
 	}
 
