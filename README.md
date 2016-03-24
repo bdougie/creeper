@@ -45,7 +45,7 @@ random.
 
 Everything else is self-explanatory and fired off in `main()` with the `pickReviewers()` function
 
-If you have Bloc-Alpha access this is a port of my [script/reviewers](https://github.com/Bloc/Bloc/blob/master/script/reviewers). You see the code side by side is about the same. 
+If you have Bloc-Alpha access this is a port of my [script/reviewers](https://github.com/Bloc/Bloc/blob/master/script/reviewers).
 
 ## Setup
 
