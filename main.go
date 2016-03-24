@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/atotto/clipboard"
 	"github.com/fatih/color"
 	"math/rand"
 	"os"
@@ -68,10 +69,26 @@ func randomlySelectFromPossible(r *Reviewers) {
 	rand.Seed(time.Now().UnixNano())
 	randomize := rand.Perm(len(r.possible))
 
+	reviewers := make([]string, 4)
+	i := 0
+
 	for _, v := range randomize[:4] {
-		color.Red(r.possible[v])
+		reviewers[i] = r.possible[v]
+		i++
 	}
 
+	joined := strings.Join(reviewers, " ")
+	color.Red(joined)
+
+	copyToClipboard(joined)
+}
+
+func copyToClipboard(j string) {
+	if err := clipboard.WriteAll(string(j)); err != nil {
+		panic(err)
+	}
+
+	color.Green("┬──┬◡ﾉ(° -°ﾉ) copied to your clipboard")
 }
 
 func main() {
