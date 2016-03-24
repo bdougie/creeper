@@ -50,8 +50,10 @@ If you have Bloc-Alpha access this is a port of my [script/reviewers](https://gi
 ## Setup
 
 Download the latest [Go](https://golang.org/dl/) and then:
-- `$ cd creep`
-- `$ go install` 
+```bash
+$ cd creep
+$ go install
+```
 
 Installing this will allow you to run the creep from any repo.
 
