@@ -14,7 +14,7 @@ This is a Phabricator/Arcanist specific but the concept it easy to read.
 
 There is an array that holds all possible reviewers of my code:
 
-```
+```go
 var possible = []string{
 	"afogel",
 	"ambriz",
@@ -32,7 +32,7 @@ var possible = []string{
 
 The Creeper Struct holds all the methods and possible reviewers array.
 
-```
+```go
 type Creeper struct {
 	possible []string
 }
