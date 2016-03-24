@@ -4,7 +4,7 @@
 
 Selecting people to review your code is hard. It's also hard to remember who you
 picked last and who you ping too much for pull requests.
-`creep` is a script that picks 4 people to review my code at random and
+`creep` is a script that picks 4 people to review your code at random and
 copys to your clipboard.
 
 This is a Phabricator/Arcanist specific but the concept it easy to read. 
@@ -12,7 +12,7 @@ This is a Phabricator/Arcanist specific but the concept it easy to read.
 
 ## Architecture
 
-There is an array that holds all possible reviewers of my code:
+There is an array that holds all possible reviewers of your code:
 
 ```go
 var possible = []string{
@@ -45,7 +45,7 @@ random.
 
 Everything else is self-explanatory and fired off in `main()` with the `pickReviewers()` function
 
-If you have Bloc-Alpha access this is a port of my [script/reviewers](https://github.com/Bloc/Bloc/blob/master/script/reviewers).
+If you have Bloc-Alpha access this is a port of the [script/reviewers](https://github.com/Bloc/Bloc/blob/master/script/reviewers).
 
 ## Setup
 
