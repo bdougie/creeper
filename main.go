@@ -24,11 +24,11 @@ var possible = []string{
 	"aaron",
 }
 
-type Reviewers struct {
+type Creeper struct {
 	possible []string
 }
 
-func contains(r Reviewers, s string) bool {
+func contains(r Creeper, s string) bool {
 	for _, i := range r.possible {
 		if i == s {
 			return true
@@ -37,7 +37,7 @@ func contains(r Reviewers, s string) bool {
 	return false
 }
 
-func removeMeFromReviewers(r *Reviewers, name string) {
+func removeMeFromPossible(r *Creeper, name string) {
 	for i, p := range r.possible {
 		match, _ := regexp.MatchString(p, strings.ToLower(name))
 
@@ -49,7 +49,7 @@ func removeMeFromReviewers(r *Reviewers, name string) {
 
 func pickReviewers() {
 	phabName := os.Getenv("PHABRICATOR_USERNAME")
-	reviewers := Reviewers{possible}
+	reviewers := Creeper{possible}
 
 	if phabName == "" {
 		color.Red("You must set ENV['PHABRICATOR_USERNAME'] somewhere! (╯°□°）╯︵ ┻━┻")
@@ -61,11 +61,11 @@ func pickReviewers() {
 		return
 	}
 
-	removeMeFromReviewers(&reviewers, phabName)
+	removeMeFromPossible(&reviewers, phabName)
 	randomlySelectFromPossible(&reviewers)
 }
 
-func randomlySelectFromPossible(r *Reviewers) {
+func randomlySelectFromPossible(r *Creeper) {
 	rand.Seed(time.Now().UnixNano())
 	randomize := rand.Perm(len(r.possible))
 
