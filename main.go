@@ -57,7 +57,7 @@ func pickReviewers() {
 	}
 
 	if !contains(reviewers, phabName) {
-		color.Red("%v is not in the eligible reviewers list, please update the possibleReviewers file", phabName)
+		color.Red("Weird, %v is not in the eligible reviewers list, please update the possible reviewers array", phabName)
 		return
 	}
 
